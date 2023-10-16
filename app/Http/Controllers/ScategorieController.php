@@ -48,5 +48,9 @@ class ScategorieController extends Controller
     $Scategorie= Scategorie::where('categorieID', $idcat)->with('categories')->get();
     return response()->json($Scategorie);
     }
+    public function article()
+        {
+            return $this->hasMany(Article::class,"scategorieID");
+            }
     }
 
