@@ -28,6 +28,11 @@ class CategorieController extends Controller
             'imagecategorie' => $request->input('imagecategorie')
             ]);
             $categorie->save();
+
+
+
+
+            
             
             return response()->json($categorie, 201);
     }
@@ -35,26 +40,26 @@ class CategorieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categorie $categorie)
-    {
-        
-            
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Categorie $categorie)
-    {
-        //
-    }
+    public function show($id)
+{
+$categorie = Categorie::find($id);
+return response()->json($categorie);
+}
+public function update(Request $request, $id)
+{
+$categorie = Categorie::find($id);
+$categorie->update($request->all());
+return response()->json($categorie, 200);
+}
+   
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorie $categorie)
-    {
-        //
-    }
+    public function destroy($id)
+{
+$categorie = Categorie::find($id);
+$categorie->delete();
+return response()->json('Catégorie supprimée !');
+}
 }
