@@ -24,10 +24,11 @@ Route::middleware('api')->group(function () {
         });
         Route::get('/scat/{idcat}',
         [ScategorieController::class,'showSCategorieByCAT']);
-      
-Route::middleware('api')->group(function () {
-Route::resource('articles', ArticleController::class);
-});
+    
+        
+        Route::middleware('api')->group(function () {
+            Route::resource('articles', ArticleController::class);
+            });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
